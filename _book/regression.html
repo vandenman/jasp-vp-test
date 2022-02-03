@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Regression | JASP Verificiation Project</title>
+  <meta name="description" content="Verification of JASP" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Regression | JASP Verificiation Project" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Verification of JASP" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Regression | JASP Verificiation Project" />
+  
+  <meta name="twitter:description" content="Verification of JASP" />
+  
+
+<meta name="author" content="info@jasp-stats.org" />
+
+
+<meta name="date" content="2020-11-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mixed-models.html"/>
+<link rel="next" href="frequencies.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">JASP Verification Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#the-project"><i class="fa fa-check"></i><b>1.1</b> The Project</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#bibliography"><i class="fa fa-check"></i><b>1.2</b> Bibliography</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>2</b> Descriptives</a><ul>
+<li class="chapter" data-level="2.1" data-path="descriptives.html"><a href="descriptives.html#descriptives-1"><i class="fa fa-check"></i><b>2.1</b> Descriptives</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="descriptives.html"><a href="descriptives.html#ResultsDesc"><i class="fa fa-check"></i><b>2.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="2.1.2" data-path="descriptives.html"><a href="descriptives.html#ByHandDesc"><i class="fa fa-check"></i><b>2.1.2</b> By Hand</a></li>
+<li class="chapter" data-level="2.1.3" data-path="descriptives.html"><a href="descriptives.html#jaspDesc"><i class="fa fa-check"></i><b>2.1.3</b> JASP</a></li>
+<li class="chapter" data-level="2.1.4" data-path="descriptives.html"><a href="descriptives.html#spssDesc"><i class="fa fa-check"></i><b>2.1.4</b> SPSS</a></li>
+<li class="chapter" data-level="2.1.5" data-path="descriptives.html"><a href="descriptives.html#sasDesc"><i class="fa fa-check"></i><b>2.1.5</b> SAS</a></li>
+<li class="chapter" data-level="2.1.6" data-path="descriptives.html"><a href="descriptives.html#minitabDesc"><i class="fa fa-check"></i><b>2.1.6</b> Minitab</a></li>
+<li class="chapter" data-level="2.1.7" data-path="descriptives.html"><a href="descriptives.html#rDesc"><i class="fa fa-check"></i><b>2.1.7</b> R</a></li>
+<li class="chapter" data-level="2.1.8" data-path="descriptives.html"><a href="descriptives.html#remarksDesc"><i class="fa fa-check"></i><b>2.1.8</b> Remarks</a></li>
+<li class="chapter" data-level="2.1.9" data-path="descriptives.html"><a href="descriptives.html#refDesc"><i class="fa fa-check"></i><b>2.1.9</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>3</b> T-Tests</a><ul>
+<li class="chapter" data-level="3.1" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test"><i class="fa fa-check"></i><b>3.1</b> Independent Samples T-Test</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="t-tests.html"><a href="t-tests.html#ResultsISTT"><i class="fa fa-check"></i><b>3.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="3.1.2" data-path="t-tests.html"><a href="t-tests.html#ByHandISTT"><i class="fa fa-check"></i><b>3.1.2</b> By Hand</a></li>
+<li class="chapter" data-level="3.1.3" data-path="t-tests.html"><a href="t-tests.html#jaspISTT"><i class="fa fa-check"></i><b>3.1.3</b> JASP</a></li>
+<li class="chapter" data-level="3.1.4" data-path="t-tests.html"><a href="t-tests.html#spssISTT"><i class="fa fa-check"></i><b>3.1.4</b> SPSS</a></li>
+<li class="chapter" data-level="3.1.5" data-path="t-tests.html"><a href="t-tests.html#sasISTT"><i class="fa fa-check"></i><b>3.1.5</b> SAS</a></li>
+<li class="chapter" data-level="3.1.6" data-path="t-tests.html"><a href="t-tests.html#minitabISTT"><i class="fa fa-check"></i><b>3.1.6</b> Minitab</a></li>
+<li class="chapter" data-level="3.1.7" data-path="t-tests.html"><a href="t-tests.html#rISTT"><i class="fa fa-check"></i><b>3.1.7</b> R</a></li>
+<li class="chapter" data-level="3.1.8" data-path="t-tests.html"><a href="t-tests.html#remarksISTT"><i class="fa fa-check"></i><b>3.1.8</b> Remarks</a></li>
+<li class="chapter" data-level="3.1.9" data-path="t-tests.html"><a href="t-tests.html#refISTT"><i class="fa fa-check"></i><b>3.1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="t-tests.html"><a href="t-tests.html#mann-whitney-test"><i class="fa fa-check"></i><b>3.2</b> Mann-Whitney Test</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="t-tests.html"><a href="t-tests.html#ResultsMWT"><i class="fa fa-check"></i><b>3.2.1</b> Results Overview</a></li>
+<li class="chapter" data-level="3.2.2" data-path="t-tests.html"><a href="t-tests.html#ByHandMWT"><i class="fa fa-check"></i><b>3.2.2</b> By Hand</a></li>
+<li class="chapter" data-level="3.2.3" data-path="t-tests.html"><a href="t-tests.html#jaspMWT"><i class="fa fa-check"></i><b>3.2.3</b> JASP</a></li>
+<li class="chapter" data-level="3.2.4" data-path="t-tests.html"><a href="t-tests.html#spssMWT"><i class="fa fa-check"></i><b>3.2.4</b> SPSS</a></li>
+<li class="chapter" data-level="3.2.5" data-path="t-tests.html"><a href="t-tests.html#sasMWT"><i class="fa fa-check"></i><b>3.2.5</b> SAS</a></li>
+<li class="chapter" data-level="3.2.6" data-path="t-tests.html"><a href="t-tests.html#minitabMWT"><i class="fa fa-check"></i><b>3.2.6</b> Minitab</a></li>
+<li class="chapter" data-level="3.2.7" data-path="t-tests.html"><a href="t-tests.html#rMWT"><i class="fa fa-check"></i><b>3.2.7</b> R</a></li>
+<li class="chapter" data-level="3.2.8" data-path="t-tests.html"><a href="t-tests.html#remarksMWT"><i class="fa fa-check"></i><b>3.2.8</b> Remarks</a></li>
+<li class="chapter" data-level="3.2.9" data-path="t-tests.html"><a href="t-tests.html#refMWT"><i class="fa fa-check"></i><b>3.2.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>3.3</b> Paired Samples T-Test</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="t-tests.html"><a href="t-tests.html#ResultsPSTT"><i class="fa fa-check"></i><b>3.3.1</b> Results Overview</a></li>
+<li class="chapter" data-level="3.3.2" data-path="t-tests.html"><a href="t-tests.html#ByHandPSTT"><i class="fa fa-check"></i><b>3.3.2</b> By Hand</a></li>
+<li class="chapter" data-level="3.3.3" data-path="t-tests.html"><a href="t-tests.html#spssPSTT"><i class="fa fa-check"></i><b>3.3.3</b> SPSS</a></li>
+<li class="chapter" data-level="3.3.4" data-path="t-tests.html"><a href="t-tests.html#sasPSTT"><i class="fa fa-check"></i><b>3.3.4</b> SAS</a></li>
+<li class="chapter" data-level="3.3.5" data-path="t-tests.html"><a href="t-tests.html#minitabPSTT"><i class="fa fa-check"></i><b>3.3.5</b> Minitab</a></li>
+<li class="chapter" data-level="3.3.6" data-path="t-tests.html"><a href="t-tests.html#rPSTT"><i class="fa fa-check"></i><b>3.3.6</b> R</a></li>
+<li class="chapter" data-level="3.3.7" data-path="t-tests.html"><a href="t-tests.html#remarksPSTT"><i class="fa fa-check"></i><b>3.3.7</b> Remarks</a></li>
+<li class="chapter" data-level="3.3.8" data-path="t-tests.html"><a href="t-tests.html#refPSTT"><i class="fa fa-check"></i><b>3.3.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="t-tests.html"><a href="t-tests.html#wilcoxon-test"><i class="fa fa-check"></i><b>3.4</b> Wilcoxon Test</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="t-tests.html"><a href="t-tests.html#ResultsWilcoxon"><i class="fa fa-check"></i><b>3.4.1</b> Results Overview</a></li>
+<li class="chapter" data-level="3.4.2" data-path="t-tests.html"><a href="t-tests.html#ByHandWilcoxon"><i class="fa fa-check"></i><b>3.4.2</b> By Hand</a></li>
+<li class="chapter" data-level="3.4.3" data-path="t-tests.html"><a href="t-tests.html#jaspWilcoxon"><i class="fa fa-check"></i><b>3.4.3</b> JASP</a></li>
+<li class="chapter" data-level="3.4.4" data-path="t-tests.html"><a href="t-tests.html#spssWilcoxon"><i class="fa fa-check"></i><b>3.4.4</b> SPSS</a></li>
+<li class="chapter" data-level="3.4.5" data-path="t-tests.html"><a href="t-tests.html#sasWilcoxon"><i class="fa fa-check"></i><b>3.4.5</b> SAS</a></li>
+<li class="chapter" data-level="3.4.6" data-path="t-tests.html"><a href="t-tests.html#minitabWilcoxon"><i class="fa fa-check"></i><b>3.4.6</b> Minitab</a></li>
+<li class="chapter" data-level="3.4.7" data-path="t-tests.html"><a href="t-tests.html#rWilcoxon"><i class="fa fa-check"></i><b>3.4.7</b> R</a></li>
+<li class="chapter" data-level="3.4.8" data-path="t-tests.html"><a href="t-tests.html#remarksWilcoxon"><i class="fa fa-check"></i><b>3.4.8</b> Remarks</a></li>
+<li class="chapter" data-level="3.4.9" data-path="t-tests.html"><a href="t-tests.html#refWilcoxon"><i class="fa fa-check"></i><b>3.4.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test"><i class="fa fa-check"></i><b>3.5</b> One Sample T-Test</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="t-tests.html"><a href="t-tests.html#ResultsOSTT"><i class="fa fa-check"></i><b>3.5.1</b> Results Overview</a></li>
+<li class="chapter" data-level="3.5.2" data-path="t-tests.html"><a href="t-tests.html#ByHandOSTT"><i class="fa fa-check"></i><b>3.5.2</b> By Hand</a></li>
+<li class="chapter" data-level="3.5.3" data-path="t-tests.html"><a href="t-tests.html#jaspOSTT"><i class="fa fa-check"></i><b>3.5.3</b> JASP</a></li>
+<li class="chapter" data-level="3.5.4" data-path="t-tests.html"><a href="t-tests.html#spssOSTT"><i class="fa fa-check"></i><b>3.5.4</b> SPSS</a></li>
+<li class="chapter" data-level="3.5.5" data-path="t-tests.html"><a href="t-tests.html#sasOSTT"><i class="fa fa-check"></i><b>3.5.5</b> SAS</a></li>
+<li class="chapter" data-level="3.5.6" data-path="t-tests.html"><a href="t-tests.html#minitabOSTT"><i class="fa fa-check"></i><b>3.5.6</b> Minitab</a></li>
+<li class="chapter" data-level="3.5.7" data-path="t-tests.html"><a href="t-tests.html#rOSTT"><i class="fa fa-check"></i><b>3.5.7</b> R</a></li>
+<li class="chapter" data-level="3.5.8" data-path="t-tests.html"><a href="t-tests.html#remarksOSTT"><i class="fa fa-check"></i><b>3.5.8</b> Remarks</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> ANOVA</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#one-way-independent-anova"><i class="fa fa-check"></i><b>4.1</b> One-Way Independent ANOVA</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="anova.html"><a href="anova.html#ResultsAnova"><i class="fa fa-check"></i><b>4.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.1.2" data-path="anova.html"><a href="anova.html#ByHandAnova"><i class="fa fa-check"></i><b>4.1.2</b> By Hand</a></li>
+<li class="chapter" data-level="4.1.3" data-path="anova.html"><a href="anova.html#jaspAnova"><i class="fa fa-check"></i><b>4.1.3</b> JASP</a></li>
+<li class="chapter" data-level="4.1.4" data-path="anova.html"><a href="anova.html#spssAnova"><i class="fa fa-check"></i><b>4.1.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.1.5" data-path="anova.html"><a href="anova.html#sasAnova"><i class="fa fa-check"></i><b>4.1.5</b> SAS</a></li>
+<li class="chapter" data-level="4.1.6" data-path="anova.html"><a href="anova.html#minitabAnova"><i class="fa fa-check"></i><b>4.1.6</b> Minitab</a></li>
+<li class="chapter" data-level="4.1.7" data-path="anova.html"><a href="anova.html#rAnova"><i class="fa fa-check"></i><b>4.1.7</b> R</a></li>
+<li class="chapter" data-level="4.1.8" data-path="anova.html"><a href="anova.html#remarksAnova"><i class="fa fa-check"></i><b>4.1.8</b> Remarks</a></li>
+<li class="chapter" data-level="4.1.9" data-path="anova.html"><a href="anova.html#refAnova"><i class="fa fa-check"></i><b>4.1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#factorial-independent-anova"><i class="fa fa-check"></i><b>4.2</b> Factorial Independent ANOVA</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="anova.html"><a href="anova.html#ResultsFIanova"><i class="fa fa-check"></i><b>4.2.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="anova.html"><a href="anova.html#ByHandFIanova"><i class="fa fa-check"></i><b>4.2.2</b> By Hand</a></li>
+<li class="chapter" data-level="4.2.3" data-path="anova.html"><a href="anova.html#jaspFIanova"><i class="fa fa-check"></i><b>4.2.3</b> JASP</a></li>
+<li class="chapter" data-level="4.2.4" data-path="anova.html"><a href="anova.html#spssFIanova"><i class="fa fa-check"></i><b>4.2.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.2.5" data-path="anova.html"><a href="anova.html#sasFIanova"><i class="fa fa-check"></i><b>4.2.5</b> SAS</a></li>
+<li class="chapter" data-level="4.2.6" data-path="anova.html"><a href="anova.html#minitabFIanova"><i class="fa fa-check"></i><b>4.2.6</b> Minitab</a></li>
+<li class="chapter" data-level="4.2.7" data-path="anova.html"><a href="anova.html#rFIanova"><i class="fa fa-check"></i><b>4.2.7</b> R</a></li>
+<li class="chapter" data-level="4.2.8" data-path="anova.html"><a href="anova.html#remarksFIanova"><i class="fa fa-check"></i><b>4.2.8</b> Remarks</a></li>
+<li class="chapter" data-level="4.2.9" data-path="anova.html"><a href="anova.html#refFIanova"><i class="fa fa-check"></i><b>4.2.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#kruskal-wallis-anova"><i class="fa fa-check"></i><b>4.3</b> Kruskal-Wallis ANOVA</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#ResultsKWA"><i class="fa fa-check"></i><b>4.3.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="anova.html"><a href="anova.html#ByHandKWA"><i class="fa fa-check"></i><b>4.3.2</b> By Hand</a></li>
+<li class="chapter" data-level="4.3.3" data-path="anova.html"><a href="anova.html#jaspKWA"><i class="fa fa-check"></i><b>4.3.3</b> JASP</a></li>
+<li class="chapter" data-level="4.3.4" data-path="anova.html"><a href="anova.html#spssKWA"><i class="fa fa-check"></i><b>4.3.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.3.5" data-path="anova.html"><a href="anova.html#sasKWA"><i class="fa fa-check"></i><b>4.3.5</b> SAS</a></li>
+<li class="chapter" data-level="4.3.6" data-path="anova.html"><a href="anova.html#minitabKWA"><i class="fa fa-check"></i><b>4.3.6</b> Minitab</a></li>
+<li class="chapter" data-level="4.3.7" data-path="anova.html"><a href="anova.html#rKWA"><i class="fa fa-check"></i><b>4.3.7</b> R</a></li>
+<li class="chapter" data-level="4.3.8" data-path="anova.html"><a href="anova.html#remarksKWA"><i class="fa fa-check"></i><b>4.3.8</b> Remarks</a></li>
+<li class="chapter" data-level="4.3.9" data-path="anova.html"><a href="anova.html#refKWA"><i class="fa fa-check"></i><b>4.3.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#one-way-repeated-measures-anova"><i class="fa fa-check"></i><b>4.4</b> One-Way Repeated-Measures ANOVA</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="anova.html"><a href="anova.html#ResultsRanova"><i class="fa fa-check"></i><b>4.4.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.4.2" data-path="anova.html"><a href="anova.html#ByHandRanova"><i class="fa fa-check"></i><b>4.4.2</b> By Hand</a></li>
+<li class="chapter" data-level="4.4.3" data-path="anova.html"><a href="anova.html#jaspRanova"><i class="fa fa-check"></i><b>4.4.3</b> JASP</a></li>
+<li class="chapter" data-level="4.4.4" data-path="anova.html"><a href="anova.html#spssRanova"><i class="fa fa-check"></i><b>4.4.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.4.5" data-path="anova.html"><a href="anova.html#sasRanova"><i class="fa fa-check"></i><b>4.4.5</b> SAS</a></li>
+<li class="chapter" data-level="4.4.6" data-path="anova.html"><a href="anova.html#minitabRanova"><i class="fa fa-check"></i><b>4.4.6</b> Minitab</a></li>
+<li class="chapter" data-level="4.4.7" data-path="anova.html"><a href="anova.html#rRanova"><i class="fa fa-check"></i><b>4.4.7</b> R</a></li>
+<li class="chapter" data-level="4.4.8" data-path="anova.html"><a href="anova.html#remarksRanova"><i class="fa fa-check"></i><b>4.4.8</b> Remarks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="anova.html"><a href="anova.html#refRanova"><i class="fa fa-check"></i><b>4.4.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#friedman-test"><i class="fa fa-check"></i><b>4.5</b> Friedman Test</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="anova.html"><a href="anova.html#ResultsFriedman"><i class="fa fa-check"></i><b>4.5.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.5.2" data-path="anova.html"><a href="anova.html#ByHandFriedman"><i class="fa fa-check"></i><b>4.5.2</b> By Hand</a></li>
+<li class="chapter" data-level="4.5.3" data-path="anova.html"><a href="anova.html#jaspFriedman"><i class="fa fa-check"></i><b>4.5.3</b> JASP</a></li>
+<li class="chapter" data-level="4.5.4" data-path="anova.html"><a href="anova.html#spssFriedman"><i class="fa fa-check"></i><b>4.5.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.5.5" data-path="anova.html"><a href="anova.html#sasFriedman"><i class="fa fa-check"></i><b>4.5.5</b> SAS</a></li>
+<li class="chapter" data-level="4.5.6" data-path="anova.html"><a href="anova.html#minitabFriedman"><i class="fa fa-check"></i><b>4.5.6</b> Minitab</a></li>
+<li class="chapter" data-level="4.5.7" data-path="anova.html"><a href="anova.html#rFriedman"><i class="fa fa-check"></i><b>4.5.7</b> R</a></li>
+<li class="chapter" data-level="4.5.8" data-path="anova.html"><a href="anova.html#remarksFriedman"><i class="fa fa-check"></i><b>4.5.8</b> Remarks</a></li>
+<li class="chapter" data-level="4.5.9" data-path="anova.html"><a href="anova.html#refFriedman"><i class="fa fa-check"></i><b>4.5.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#ancova"><i class="fa fa-check"></i><b>4.6</b> ANCOVA</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="anova.html"><a href="anova.html#ResultsANCOVA"><i class="fa fa-check"></i><b>4.6.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.6.2" data-path="anova.html"><a href="anova.html#jaspANCOVA"><i class="fa fa-check"></i><b>4.6.2</b> JASP</a></li>
+<li class="chapter" data-level="4.6.3" data-path="anova.html"><a href="anova.html#spssANCOVA"><i class="fa fa-check"></i><b>4.6.3</b> SPSS</a></li>
+<li class="chapter" data-level="4.6.4" data-path="anova.html"><a href="anova.html#sasANCOVA"><i class="fa fa-check"></i><b>4.6.4</b> SAS</a></li>
+<li class="chapter" data-level="4.6.5" data-path="anova.html"><a href="anova.html#minitabANCOVA"><i class="fa fa-check"></i><b>4.6.5</b> Minitab</a></li>
+<li class="chapter" data-level="4.6.6" data-path="anova.html"><a href="anova.html#rANCOVA"><i class="fa fa-check"></i><b>4.6.6</b> R</a></li>
+<li class="chapter" data-level="4.6.7" data-path="anova.html"><a href="anova.html#remarksANCOVA"><i class="fa fa-check"></i><b>4.6.7</b> Remarks</a></li>
+<li class="chapter" data-level="4.6.8" data-path="anova.html"><a href="anova.html#refANCOVA"><i class="fa fa-check"></i><b>4.6.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#manova"><i class="fa fa-check"></i><b>4.7</b> MANOVA</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="anova.html"><a href="anova.html#ResultsMANOVA"><i class="fa fa-check"></i><b>4.7.1</b> Results Overview</a></li>
+<li class="chapter" data-level="4.7.2" data-path="anova.html"><a href="anova.html#jaspMANOVA"><i class="fa fa-check"></i><b>4.7.2</b> JASP</a></li>
+<li class="chapter" data-level="4.7.3" data-path="anova.html"><a href="anova.html#spssMANOVA"><i class="fa fa-check"></i><b>4.7.3</b> SPSS</a></li>
+<li class="chapter" data-level="4.7.4" data-path="anova.html"><a href="anova.html#sasMANOVA"><i class="fa fa-check"></i><b>4.7.4</b> SAS</a></li>
+<li class="chapter" data-level="4.7.5" data-path="anova.html"><a href="anova.html#minitabMANOVA"><i class="fa fa-check"></i><b>4.7.5</b> Minitab</a></li>
+<li class="chapter" data-level="4.7.6" data-path="anova.html"><a href="anova.html#rMANOVA"><i class="fa fa-check"></i><b>4.7.6</b> R</a></li>
+<li class="chapter" data-level="4.7.7" data-path="anova.html"><a href="anova.html#remarksMANOVA"><i class="fa fa-check"></i><b>4.7.7</b> Remarks</a></li>
+<li class="chapter" data-level="4.7.8" data-path="anova.html"><a href="anova.html#refMANOVA"><i class="fa fa-check"></i><b>4.7.8</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="mixed-models.html"><a href="mixed-models.html"><i class="fa fa-check"></i><b>5</b> Mixed Models</a><ul>
+<li class="chapter" data-level="5.1" data-path="mixed-models.html"><a href="mixed-models.html#linear-mixed-models"><i class="fa fa-check"></i><b>5.1</b> Linear Mixed Models</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="mixed-models.html"><a href="mixed-models.html#ResultsLMM"><i class="fa fa-check"></i><b>5.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="5.1.2" data-path="mixed-models.html"><a href="mixed-models.html#jaspLMM"><i class="fa fa-check"></i><b>5.1.2</b> JASP</a></li>
+<li class="chapter" data-level="5.1.3" data-path="mixed-models.html"><a href="mixed-models.html#spssLMM"><i class="fa fa-check"></i><b>5.1.3</b> SPSS</a></li>
+<li class="chapter" data-level="5.1.4" data-path="mixed-models.html"><a href="mixed-models.html#sasLMM"><i class="fa fa-check"></i><b>5.1.4</b> SAS</a></li>
+<li class="chapter" data-level="5.1.5" data-path="mixed-models.html"><a href="mixed-models.html#minitabLMM"><i class="fa fa-check"></i><b>5.1.5</b> Minitab</a></li>
+<li class="chapter" data-level="5.1.6" data-path="mixed-models.html"><a href="mixed-models.html#rLMM"><i class="fa fa-check"></i><b>5.1.6</b> R</a></li>
+<li class="chapter" data-level="5.1.7" data-path="mixed-models.html"><a href="mixed-models.html#remarksLMM"><i class="fa fa-check"></i><b>5.1.7</b> Remarks</a></li>
+<li class="chapter" data-level="5.1.8" data-path="mixed-models.html"><a href="mixed-models.html#refLMM"><i class="fa fa-check"></i><b>5.1.8</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>6</b> Regression</a><ul>
+<li class="chapter" data-level="6.1" data-path="regression.html"><a href="regression.html#correlation"><i class="fa fa-check"></i><b>6.1</b> Correlation</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="regression.html"><a href="regression.html#ResultsCorr"><i class="fa fa-check"></i><b>6.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="6.1.2" data-path="regression.html"><a href="regression.html#ByHandCorr"><i class="fa fa-check"></i><b>6.1.2</b> By Hand</a></li>
+<li class="chapter" data-level="6.1.3" data-path="regression.html"><a href="regression.html#jaspCorr"><i class="fa fa-check"></i><b>6.1.3</b> JASP</a></li>
+<li class="chapter" data-level="6.1.4" data-path="regression.html"><a href="regression.html#spssCorr"><i class="fa fa-check"></i><b>6.1.4</b> SPSS</a></li>
+<li class="chapter" data-level="6.1.5" data-path="regression.html"><a href="regression.html#sasCorr"><i class="fa fa-check"></i><b>6.1.5</b> SAS</a></li>
+<li class="chapter" data-level="6.1.6" data-path="regression.html"><a href="regression.html#minitabCorr"><i class="fa fa-check"></i><b>6.1.6</b> Minitab</a></li>
+<li class="chapter" data-level="6.1.7" data-path="regression.html"><a href="regression.html#rCorr"><i class="fa fa-check"></i><b>6.1.7</b> R</a></li>
+<li class="chapter" data-level="6.1.8" data-path="regression.html"><a href="regression.html#remarksCorr"><i class="fa fa-check"></i><b>6.1.8</b> Remarks</a></li>
+<li class="chapter" data-level="6.1.9" data-path="regression.html"><a href="regression.html#refCorr"><i class="fa fa-check"></i><b>6.1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regression.html"><a href="regression.html#linear-regression"><i class="fa fa-check"></i><b>6.2</b> Linear Regression</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regression.html"><a href="regression.html#ResultsReg"><i class="fa fa-check"></i><b>6.2.1</b> Results Overview</a></li>
+<li class="chapter" data-level="6.2.2" data-path="regression.html"><a href="regression.html#ByHandReg"><i class="fa fa-check"></i><b>6.2.2</b> By Hand</a></li>
+<li class="chapter" data-level="6.2.3" data-path="regression.html"><a href="regression.html#jaspReg"><i class="fa fa-check"></i><b>6.2.3</b> JASP</a></li>
+<li class="chapter" data-level="6.2.4" data-path="regression.html"><a href="regression.html#spssReg"><i class="fa fa-check"></i><b>6.2.4</b> SPSS</a></li>
+<li class="chapter" data-level="6.2.5" data-path="regression.html"><a href="regression.html#sasReg"><i class="fa fa-check"></i><b>6.2.5</b> SAS</a></li>
+<li class="chapter" data-level="6.2.6" data-path="regression.html"><a href="regression.html#minitabReg"><i class="fa fa-check"></i><b>6.2.6</b> Minitab</a></li>
+<li class="chapter" data-level="6.2.7" data-path="regression.html"><a href="regression.html#rReg"><i class="fa fa-check"></i><b>6.2.7</b> R</a></li>
+<li class="chapter" data-level="6.2.8" data-path="regression.html"><a href="regression.html#remarksReg"><i class="fa fa-check"></i><b>6.2.8</b> Remarks</a></li>
+<li class="chapter" data-level="6.2.9" data-path="regression.html"><a href="regression.html#refReg"><i class="fa fa-check"></i><b>6.2.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regression.html"><a href="regression.html#logistic-regression"><i class="fa fa-check"></i><b>6.3</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="regression.html"><a href="regression.html#ResultsLogreg"><i class="fa fa-check"></i><b>6.3.1</b> Results Overview</a></li>
+<li class="chapter" data-level="6.3.2" data-path="regression.html"><a href="regression.html#jaspLogreg"><i class="fa fa-check"></i><b>6.3.2</b> JASP</a></li>
+<li class="chapter" data-level="6.3.3" data-path="regression.html"><a href="regression.html#spssLogreg"><i class="fa fa-check"></i><b>6.3.3</b> SPSS</a></li>
+<li class="chapter" data-level="6.3.4" data-path="regression.html"><a href="regression.html#sasLogreg"><i class="fa fa-check"></i><b>6.3.4</b> SAS</a></li>
+<li class="chapter" data-level="6.3.5" data-path="regression.html"><a href="regression.html#minitabLogreg"><i class="fa fa-check"></i><b>6.3.5</b> Minitab</a></li>
+<li class="chapter" data-level="6.3.6" data-path="regression.html"><a href="regression.html#rLogreg"><i class="fa fa-check"></i><b>6.3.6</b> R</a></li>
+<li class="chapter" data-level="6.3.7" data-path="regression.html"><a href="regression.html#remarksLogreg"><i class="fa fa-check"></i><b>6.3.7</b> Remarks</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>7</b> Frequencies</a><ul>
+<li class="chapter" data-level="7.1" data-path="frequencies.html"><a href="frequencies.html#binomial-test"><i class="fa fa-check"></i><b>7.1</b> Binomial Test</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="frequencies.html"><a href="frequencies.html#example"><i class="fa fa-check"></i><b>7.1.1</b> Example</a></li>
+<li class="chapter" data-level="7.1.2" data-path="frequencies.html"><a href="frequencies.html#ResultsBinom"><i class="fa fa-check"></i><b>7.1.2</b> Results Overview</a></li>
+<li class="chapter" data-level="7.1.3" data-path="frequencies.html"><a href="frequencies.html#ByHandBinom"><i class="fa fa-check"></i><b>7.1.3</b> By Hand</a></li>
+<li class="chapter" data-level="7.1.4" data-path="frequencies.html"><a href="frequencies.html#jaspBinom"><i class="fa fa-check"></i><b>7.1.4</b> JASP</a></li>
+<li class="chapter" data-level="7.1.5" data-path="frequencies.html"><a href="frequencies.html#spssBinom"><i class="fa fa-check"></i><b>7.1.5</b> SPSS</a></li>
+<li class="chapter" data-level="7.1.6" data-path="frequencies.html"><a href="frequencies.html#sasBinom"><i class="fa fa-check"></i><b>7.1.6</b> SAS</a></li>
+<li class="chapter" data-level="7.1.7" data-path="frequencies.html"><a href="frequencies.html#minitabBinom"><i class="fa fa-check"></i><b>7.1.7</b> Minitab</a></li>
+<li class="chapter" data-level="7.1.8" data-path="frequencies.html"><a href="frequencies.html#rBinom"><i class="fa fa-check"></i><b>7.1.8</b> R</a></li>
+<li class="chapter" data-level="7.1.9" data-path="frequencies.html"><a href="frequencies.html#remarksBinom"><i class="fa fa-check"></i><b>7.1.9</b> Remarks</a></li>
+<li class="chapter" data-level="7.1.10" data-path="frequencies.html"><a href="frequencies.html#refBinom"><i class="fa fa-check"></i><b>7.1.10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="frequencies.html"><a href="frequencies.html#multinomial-test-chi-square-goodness-of-fit-test"><i class="fa fa-check"></i><b>7.2</b> Multinomial Test / Chi-square Goodness of Fit Test</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="frequencies.html"><a href="frequencies.html#example-1"><i class="fa fa-check"></i><b>7.2.1</b> Example</a></li>
+<li class="chapter" data-level="7.2.2" data-path="frequencies.html"><a href="frequencies.html#ResultsMultinom"><i class="fa fa-check"></i><b>7.2.2</b> Results Overview</a></li>
+<li class="chapter" data-level="7.2.3" data-path="frequencies.html"><a href="frequencies.html#jaspMultinom"><i class="fa fa-check"></i><b>7.2.3</b> JASP</a></li>
+<li class="chapter" data-level="7.2.4" data-path="frequencies.html"><a href="frequencies.html#spssMultinom"><i class="fa fa-check"></i><b>7.2.4</b> SPSS</a></li>
+<li class="chapter" data-level="7.2.5" data-path="frequencies.html"><a href="frequencies.html#sasMultinom"><i class="fa fa-check"></i><b>7.2.5</b> SAS</a></li>
+<li class="chapter" data-level="7.2.6" data-path="frequencies.html"><a href="frequencies.html#minitabMultinom"><i class="fa fa-check"></i><b>7.2.6</b> Minitab</a></li>
+<li class="chapter" data-level="7.2.7" data-path="frequencies.html"><a href="frequencies.html#rMultinom"><i class="fa fa-check"></i><b>7.2.7</b> R</a></li>
+<li class="chapter" data-level="7.2.8" data-path="frequencies.html"><a href="frequencies.html#remarksMultinom"><i class="fa fa-check"></i><b>7.2.8</b> Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="frequencies.html"><a href="frequencies.html#chi-squared-test"><i class="fa fa-check"></i><b>7.3</b> Chi-Squared-Test</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="frequencies.html"><a href="frequencies.html#ResultsChisquare"><i class="fa fa-check"></i><b>7.3.1</b> Results Overview</a></li>
+<li class="chapter" data-level="7.3.2" data-path="frequencies.html"><a href="frequencies.html#ByHandChisquare"><i class="fa fa-check"></i><b>7.3.2</b> By Hand</a></li>
+<li class="chapter" data-level="7.3.3" data-path="frequencies.html"><a href="frequencies.html#jaspChisquare"><i class="fa fa-check"></i><b>7.3.3</b> JASP</a></li>
+<li class="chapter" data-level="7.3.4" data-path="frequencies.html"><a href="frequencies.html#spssChisquare"><i class="fa fa-check"></i><b>7.3.4</b> SPSS</a></li>
+<li class="chapter" data-level="7.3.5" data-path="frequencies.html"><a href="frequencies.html#sasChisquare"><i class="fa fa-check"></i><b>7.3.5</b> SAS</a></li>
+<li class="chapter" data-level="7.3.6" data-path="frequencies.html"><a href="frequencies.html#minitabChisquare"><i class="fa fa-check"></i><b>7.3.6</b> Minitab</a></li>
+<li class="chapter" data-level="7.3.7" data-path="frequencies.html"><a href="frequencies.html#rChisquare"><i class="fa fa-check"></i><b>7.3.7</b> R</a></li>
+<li class="chapter" data-level="7.3.8" data-path="frequencies.html"><a href="frequencies.html#remarksChisquare"><i class="fa fa-check"></i><b>7.3.8</b> Remarks</a></li>
+<li class="chapter" data-level="7.3.9" data-path="frequencies.html"><a href="frequencies.html#refChisquare"><i class="fa fa-check"></i><b>7.3.9</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>8</b> Factor</a><ul>
+<li class="chapter" data-level="8.1" data-path="factor.html"><a href="factor.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.1</b> Principal Component Analysis</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="factor.html"><a href="factor.html#ResultsPCA"><i class="fa fa-check"></i><b>8.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="8.1.2" data-path="factor.html"><a href="factor.html#jaspPCA"><i class="fa fa-check"></i><b>8.1.2</b> JASP</a></li>
+<li class="chapter" data-level="8.1.3" data-path="factor.html"><a href="factor.html#spssPCA"><i class="fa fa-check"></i><b>8.1.3</b> SPSS</a></li>
+<li class="chapter" data-level="8.1.4" data-path="factor.html"><a href="factor.html#sasPCA"><i class="fa fa-check"></i><b>8.1.4</b> SAS</a></li>
+<li class="chapter" data-level="8.1.5" data-path="factor.html"><a href="factor.html#minitabPCA"><i class="fa fa-check"></i><b>8.1.5</b> Minitab</a></li>
+<li class="chapter" data-level="8.1.6" data-path="factor.html"><a href="factor.html#rPCA"><i class="fa fa-check"></i><b>8.1.6</b> R</a></li>
+<li class="chapter" data-level="8.1.7" data-path="factor.html"><a href="factor.html#remarksPCA"><i class="fa fa-check"></i><b>8.1.7</b> Remarks</a></li>
+<li class="chapter" data-level="8.1.8" data-path="factor.html"><a href="factor.html#refPCA"><i class="fa fa-check"></i><b>8.1.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="factor.html"><a href="factor.html#exploratory-factor-analysis"><i class="fa fa-check"></i><b>8.2</b> Exploratory Factor Analysis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="factor.html"><a href="factor.html#ResultsEFA"><i class="fa fa-check"></i><b>8.2.1</b> Results Overview</a></li>
+<li class="chapter" data-level="8.2.2" data-path="factor.html"><a href="factor.html#jaspEFA"><i class="fa fa-check"></i><b>8.2.2</b> JASP</a></li>
+<li class="chapter" data-level="8.2.3" data-path="factor.html"><a href="factor.html#spssEFA"><i class="fa fa-check"></i><b>8.2.3</b> SPSS</a></li>
+<li class="chapter" data-level="8.2.4" data-path="factor.html"><a href="factor.html#sasEFA"><i class="fa fa-check"></i><b>8.2.4</b> SAS</a></li>
+<li class="chapter" data-level="8.2.5" data-path="factor.html"><a href="factor.html#minitabEFA"><i class="fa fa-check"></i><b>8.2.5</b> Minitab</a></li>
+<li class="chapter" data-level="8.2.6" data-path="factor.html"><a href="factor.html#rEFA"><i class="fa fa-check"></i><b>8.2.6</b> R</a></li>
+<li class="chapter" data-level="8.2.7" data-path="factor.html"><a href="factor.html#remarksEFA"><i class="fa fa-check"></i><b>8.2.7</b> Remarks</a></li>
+<li class="chapter" data-level="8.2.8" data-path="factor.html"><a href="factor.html#refEFA"><i class="fa fa-check"></i><b>8.2.8</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reliability-module.html"><a href="reliability-module.html"><i class="fa fa-check"></i><b>9</b> Reliability Module</a><ul>
+<li class="chapter" data-level="9.1" data-path="reliability-module.html"><a href="reliability-module.html#classical-single-test-reliability-analysis"><i class="fa fa-check"></i><b>9.1</b> Classical Single-Test Reliability Analysis</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="reliability-module.html"><a href="reliability-module.html#ResultsReli"><i class="fa fa-check"></i><b>9.1.1</b> Results Overview</a></li>
+<li class="chapter" data-level="9.1.2" data-path="reliability-module.html"><a href="reliability-module.html#jaspReli"><i class="fa fa-check"></i><b>9.1.2</b> JASP</a></li>
+<li class="chapter" data-level="9.1.3" data-path="reliability-module.html"><a href="reliability-module.html#spssReli"><i class="fa fa-check"></i><b>9.1.3</b> SPSS</a></li>
+<li class="chapter" data-level="9.1.4" data-path="reliability-module.html"><a href="reliability-module.html#sasReli"><i class="fa fa-check"></i><b>9.1.4</b> SAS</a></li>
+<li class="chapter" data-level="9.1.5" data-path="reliability-module.html"><a href="reliability-module.html#minitabReli"><i class="fa fa-check"></i><b>9.1.5</b> Minitab</a></li>
+<li class="chapter" data-level="9.1.6" data-path="reliability-module.html"><a href="reliability-module.html#rReli"><i class="fa fa-check"></i><b>9.1.6</b> R</a></li>
+<li class="chapter" data-level="9.1.7" data-path="reliability-module.html"><a href="reliability-module.html#remarksReli"><i class="fa fa-check"></i><b>9.1.7</b> Remarks</a></li>
+<li class="chapter" data-level="9.1.8" data-path="reliability-module.html"><a href="reliability-module.html#refReli"><i class="fa fa-check"></i><b>9.1.8</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">JASP Verificiation Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regression" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Regression</h1>
+<div id="correlation" class="section level2">
+<h2><span class="header-section-number">6.1</span> Correlation</h2>
+<p>An example from Hays (1974, pp. 633-635):</p>
+<p>“The teacher collected data for a class of 91 students, obtaining for each a score <em>X</em>, based on the number of courses in high-school mathematics, and a score <em>Y</em>, the actual score on the final examination for the course.”</p>
+<table>
+<caption><span id="tab:unnamed-chunk-84">Table 6.1: </span>Data for Correlation</caption>
+<thead>
+<tr class="header">
+<th align="right">X</th>
+<th align="right">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">26</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">34</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">4.5</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">4.5</td>
+<td align="right">27</td>
+</tr>
+<tr class="odd">
+<td align="right">4.5</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">5.5</td>
+<td align="right">32</td>
+</tr>
+<tr class="odd">
+<td align="right">5.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="right">5.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">6.5</td>
+<td align="right">44</td>
+</tr>
+<tr class="even">
+<td align="right">6.5</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="right">6.5</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="right">6.5</td>
+<td align="right">28</td>
+</tr>
+<tr class="odd">
+<td align="right">7.0</td>
+<td align="right">52</td>
+</tr>
+<tr class="even">
+<td align="right">7.0</td>
+<td align="right">46</td>
+</tr>
+<tr class="odd">
+<td align="right">7.0</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="right">7.5</td>
+<td align="right">42</td>
+</tr>
+<tr class="odd">
+<td align="right">7.5</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="right">7.5</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="right">7.5</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="right">8.0</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td align="right">8.0</td>
+<td align="right">48</td>
+</tr>
+<tr class="even">
+<td align="right">8.0</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">8.0</td>
+<td align="right">40</td>
+</tr>
+</tbody>
+</table>
+<div id="ResultsCorr" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Results Overview</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-85">Table 6.2: </span>Result Overview Correlation</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">By Hand</th>
+<th align="right">JASP</th>
+<th align="right">SPSS</th>
+<th align="right">SAS</th>
+<th align="right">Minitab</th>
+<th align="right">R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pearson</td>
+<td align="right">0.81</td>
+<td align="right">0.8064</td>
+<td align="right">0.806</td>
+<td align="right">0.8064</td>
+<td align="right">0.806</td>
+<td align="right">0.8064</td>
+</tr>
+<tr class="even">
+<td align="left">Spearman</td>
+<td align="right">NA</td>
+<td align="right">0.7730</td>
+<td align="right">0.773</td>
+<td align="right">0.7730</td>
+<td align="right">0.773</td>
+<td align="right">0.7730</td>
+</tr>
+<tr class="odd">
+<td align="left">Kendall</td>
+<td align="right">NA</td>
+<td align="right">0.6121</td>
+<td align="right">0.612</td>
+<td align="right">0.6120</td>
+<td align="right">NA</td>
+<td align="right">0.6120</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ByHandCorr" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> By Hand</h3>
+<p>Calculations by hand can be found in Hays, 1974, pp. 633-635.</p>
+<p>Result: r = 0.81</p>
+<p><strong>Note:</strong> Hays calculated only the Pearson correlation coefficient.</p>
+</div>
+<div id="jaspCorr" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> JASP</h3>
+<div class="figure"><span id="fig:corrJASP"></span>
+<img src="Screenshots/Correlation/corrJASP.PNG" alt="\label{fig:corrJASP}JASP Output for Correlation"  />
+<p class="caption">
+Figure 6.1: JASP Output for Correlation
+</p>
+</div>
+</div>
+<div id="spssCorr" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> SPSS</h3>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="regression.html#cb88-1"></a>DATASET ACTIVATE DataSet1.</span>
+<span id="cb88-2"><a href="regression.html#cb88-2"></a>CORRELATIONS</span>
+<span id="cb88-3"><a href="regression.html#cb88-3"></a>  <span class="op">/</span>VARIABLES=Y X</span>
+<span id="cb88-4"><a href="regression.html#cb88-4"></a>  <span class="op">/</span>PRINT=TWOTAIL NOSIG</span>
+<span id="cb88-5"><a href="regression.html#cb88-5"></a>  <span class="op">/</span>MISSING=PAIRWISE.</span>
+<span id="cb88-6"><a href="regression.html#cb88-6"></a>NONPAR CORR</span>
+<span id="cb88-7"><a href="regression.html#cb88-7"></a>  <span class="op">/</span>VARIABLES=Y X</span>
+<span id="cb88-8"><a href="regression.html#cb88-8"></a>  <span class="op">/</span>PRINT=BOTH TWOTAIL NOSIG</span>
+<span id="cb88-9"><a href="regression.html#cb88-9"></a>  <span class="op">/</span>MISSING=PAIRWISE.</span></code></pre></div>
+<div class="figure"><span id="fig:corrSPSS"></span>
+<img src="Screenshots/Correlation/corrSPSS.PNG" alt="\label{fig:corrSPSS}SPSS Output for Correlation"  />
+<p class="caption">
+Figure 6.2: SPSS Output for Correlation
+</p>
+</div>
+</div>
+<div id="sasCorr" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> SAS</h3>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="regression.html#cb89-1"></a>PROC CORR DATA=Correlation pearson spearman kendall;</span>
+<span id="cb89-2"><a href="regression.html#cb89-2"></a>    VAR X;</span>
+<span id="cb89-3"><a href="regression.html#cb89-3"></a>    WITH Y;</span>
+<span id="cb89-4"><a href="regression.html#cb89-4"></a>RUN;</span></code></pre></div>
+<div class="figure"><span id="fig:corrSAS"></span>
+<img src="Screenshots/Correlation/corrSAS.PNG" alt="\label{fig:corrSAS}SAS Output for Correlation"  />
+<p class="caption">
+Figure 6.3: SAS Output for Correlation
+</p>
+</div>
+</div>
+<div id="minitabCorr" class="section level3">
+<h3><span class="header-section-number">6.1.6</span> Minitab</h3>
+<div class="figure"><span id="fig:corrMinitab"></span>
+<img src="Screenshots/Correlation/corrMinitab.PNG" alt="\label{fig:corrMinitab}Minitab Output for Pearson Correlation"  />
+<p class="caption">
+Figure 6.4: Minitab Output for Pearson Correlation
+</p>
+</div>
+<div class="figure"><span id="fig:corrMinitab2"></span>
+<img src="Screenshots/Correlation/corrMinitab2.PNG" alt="\label{fig:corrMinitab2}Minitab Output for Spearman Correlation"  />
+<p class="caption">
+Figure 6.5: Minitab Output for Spearman Correlation
+</p>
+</div>
+</div>
+<div id="rCorr" class="section level3">
+<h3><span class="header-section-number">6.1.7</span> R</h3>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="regression.html#cb90-1"></a><span class="kw">cor.test</span>(corr.data<span class="op">$</span>X, corr.data<span class="op">$</span>Y, <span class="dt">method =</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 	Pearson&#39;s product-moment correlation
+## 
+## data:  corr.data$X and corr.data$Y
+## t = 12.866, df = 89, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7200843 0.8681910
+## sample estimates:
+##       cor 
+## 0.8064365</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="regression.html#cb92-1"></a><span class="kw">cor.test</span>(corr.data<span class="op">$</span>X, corr.data<span class="op">$</span>Y, <span class="dt">method =</span><span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(corr.data$X, corr.data$Y, method = &quot;spearman&quot;):
+## Cannot compute exact p-value with ties</code></pre>
+<pre><code>## 
+## 	Spearman&#39;s rank correlation rho
+## 
+## data:  corr.data$X and corr.data$Y
+## S = 28502, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.7730333</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="regression.html#cb95-1"></a><span class="kw">cor.test</span>(corr.data<span class="op">$</span>X, corr.data<span class="op">$</span>Y, <span class="dt">method =</span><span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 	Kendall&#39;s rank correlation tau
+## 
+## data:  corr.data$X and corr.data$Y
+## z = 8.1519, p-value = 3.582e-16
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##       tau 
+## 0.6120845</code></pre>
+</div>
+<div id="remarksCorr" class="section level3">
+<h3><span class="header-section-number">6.1.8</span> Remarks</h3>
+<p>All differences in results between the software and hand calculation are due to rounding.</p>
+</div>
+<div id="refCorr" class="section level3">
+<h3><span class="header-section-number">6.1.9</span> References</h3>
+<p>Hays, W. L. (1974). <em>Statistics for the social sciences (2nd Ed.)</em>. New York, US: Holt, Rinehart and Winston, Inc.</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2">
+<h2><span class="header-section-number">6.2</span> Linear Regression</h2>
+<p>An example from Hays (1974, pp. 633-635):</p>
+<p>“The teacher collected data for a class of 91 students, obtaining for each a score <em>X</em>, based on the number of courses in high-school mathematics, and a score <em>Y</em>, the actual score on the final examination for the course.”</p>
+<table>
+<caption><span id="tab:unnamed-chunk-89">Table 6.3: </span>Data for Regression</caption>
+<thead>
+<tr class="header">
+<th align="right">X</th>
+<th align="right">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">2.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">2.0</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2.5</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">2.5</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">26</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">3.0</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">3.0</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">34</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">3.5</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">3.5</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">4.0</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">4.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">4.5</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">4.5</td>
+<td align="right">27</td>
+</tr>
+<tr class="odd">
+<td align="right">4.5</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">5.5</td>
+<td align="right">32</td>
+</tr>
+<tr class="odd">
+<td align="right">5.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="right">5.5</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">6.0</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">6.0</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">6.5</td>
+<td align="right">44</td>
+</tr>
+<tr class="even">
+<td align="right">6.5</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="right">6.5</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="right">6.5</td>
+<td align="right">28</td>
+</tr>
+<tr class="odd">
+<td align="right">7.0</td>
+<td align="right">52</td>
+</tr>
+<tr class="even">
+<td align="right">7.0</td>
+<td align="right">46</td>
+</tr>
+<tr class="odd">
+<td align="right">7.0</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="right">7.5</td>
+<td align="right">42</td>
+</tr>
+<tr class="odd">
+<td align="right">7.5</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="right">7.5</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="right">7.5</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="right">8.0</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td align="right">8.0</td>
+<td align="right">48</td>
+</tr>
+<tr class="even">
+<td align="right">8.0</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">8.0</td>
+<td align="right">40</td>
+</tr>
+</tbody>
+</table>
+<div id="ResultsReg" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Results Overview</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-90">Table 6.4: </span>Result Overview Independent Factorial ANOVA</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">By Hand</th>
+<th align="right">JASP</th>
+<th align="right">SPSS</th>
+<th align="right">SAS</th>
+<th align="right">Minitab</th>
+<th align="right">R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant</td>
+<td align="right">23.84</td>
+<td align="right">23.8352</td>
+<td align="right">23.835</td>
+<td align="right">23.8352</td>
+<td align="right">23.835</td>
+<td align="right">23.8350</td>
+</tr>
+<tr class="even">
+<td align="left">Regression Coefficient</td>
+<td align="right">5.42</td>
+<td align="right">5.3993</td>
+<td align="right">5.399</td>
+<td align="right">5.3993</td>
+<td align="right">5.399</td>
+<td align="right">5.3990</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\overline{x}\)</span></td>
+<td align="right">4.19</td>
+<td align="right">4.1923</td>
+<td align="right">4.192</td>
+<td align="right">4.1923</td>
+<td align="right">4.192</td>
+<td align="right">4.1923</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ByHandReg" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> By Hand</h3>
+<p>Calculations by hand can be found in Hays, 1974, pp. 633-635.</p>
+<p>Results:</p>
+<p>y’ = (5.42)(x - 4.19) + 23.84</p>
+<p><strong>Note:</strong> Hays mean-centered the equation by the mean of <span class="math inline">\(\overline{x}\)</span> = 4.19.</p>
+</div>
+<div id="jaspReg" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> JASP</h3>
+<div class="figure"><span id="fig:RegressionJASP"></span>
+<img src="Screenshots/Regression/RegressionJASP.PNG" alt="\label{fig:RegressionJASP}JASP Output for Regression"  />
+<p class="caption">
+Figure 6.6: JASP Output for Regression
+</p>
+</div>
+<div class="figure"><span id="fig:RegressionJASPmeans"></span>
+<img src="Screenshots/Regression/RegressionJASPmeans.PNG" alt="\label{fig:RegressionJASPmeans}JASP Output for Descriptives"  />
+<p class="caption">
+Figure 6.7: JASP Output for Descriptives
+</p>
+</div>
+<p><strong>Mean-centered regression equation:</strong></p>
+<p>y’ = (5.3993)(x - 4.1923) + 23.8352</p>
+</div>
+<div id="spssReg" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> SPSS</h3>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="regression.html#cb97-1"></a>DESCRIPTIVES VARIABLES=X</span>
+<span id="cb97-2"><a href="regression.html#cb97-2"></a>  <span class="op">/</span>STATISTICS=MEAN.</span>
+<span id="cb97-3"><a href="regression.html#cb97-3"></a></span>
+<span id="cb97-4"><a href="regression.html#cb97-4"></a></span>
+<span id="cb97-5"><a href="regression.html#cb97-5"></a>REGRESSION</span>
+<span id="cb97-6"><a href="regression.html#cb97-6"></a>  <span class="op">/</span>DESCRIPTIVES MEAN STDDEV CORR SIG N</span>
+<span id="cb97-7"><a href="regression.html#cb97-7"></a>  <span class="op">/</span>MISSING LISTWISE</span>
+<span id="cb97-8"><a href="regression.html#cb97-8"></a>  <span class="op">/</span>STATISTICS COEFF OUTS R ANOVA</span>
+<span id="cb97-9"><a href="regression.html#cb97-9"></a>  <span class="op">/</span>CRITERIA=<span class="kw">PIN</span>(.<span class="dv">05</span>) <span class="kw">POUT</span>(.<span class="dv">10</span>)</span>
+<span id="cb97-10"><a href="regression.html#cb97-10"></a>  <span class="op">/</span>NOORIGIN </span>
+<span id="cb97-11"><a href="regression.html#cb97-11"></a>  <span class="op">/</span>DEPENDENT Y</span>
+<span id="cb97-12"><a href="regression.html#cb97-12"></a>  <span class="op">/</span>METHOD=ENTER MeanCenteredX.</span></code></pre></div>
+<div class="figure"><span id="fig:RegressionSPSS"></span>
+<img src="Screenshots/Regression/RegressionSPSS.PNG" alt="\label{fig:RegressionSPSS}SPSS Output for Regression"  />
+<p class="caption">
+Figure 6.8: SPSS Output for Regression
+</p>
+</div>
+<p><strong>Mean-centered regression equation:</strong></p>
+<p>y’ = (5.399)(x - 4.192) + 23.835</p>
+</div>
+<div id="sasReg" class="section level3">
+<h3><span class="header-section-number">6.2.5</span> SAS</h3>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="regression.html#cb98-1"></a>proc Reg data=Regression;</span>
+<span id="cb98-2"><a href="regression.html#cb98-2"></a>title <span class="st">&quot;Linear regression&quot;</span>;</span>
+<span id="cb98-3"><a href="regression.html#cb98-3"></a>model Y =<span class="st"> </span>MeanCenteredX;</span>
+<span id="cb98-4"><a href="regression.html#cb98-4"></a>run;</span>
+<span id="cb98-5"><a href="regression.html#cb98-5"></a>	</span>
+<span id="cb98-6"><a href="regression.html#cb98-6"></a>PROC MEANS DATA=Regression;</span>
+<span id="cb98-7"><a href="regression.html#cb98-7"></a>  VAR X Y;</span>
+<span id="cb98-8"><a href="regression.html#cb98-8"></a>RUN;</span></code></pre></div>
+<div class="figure"><span id="fig:RegressionSAS"></span>
+<img src="Screenshots/Regression/RegressionSAS.PNG" alt="\label{fig:RegressionSAS}SAS Output for Regression"  />
+<p class="caption">
+Figure 6.9: SAS Output for Regression
+</p>
+</div>
+<div class="figure"><span id="fig:RegressionSASmeans"></span>
+<img src="Screenshots/Regression/RegressionSASmeans.PNG" alt="\label{fig:RegressionSASmeans}SAS Output for Means"  />
+<p class="caption">
+Figure 6.10: SAS Output for Means
+</p>
+</div>
+<p><strong>Mean-centered regression equation:</strong></p>
+<p>y’ = (5.3993)(x - 4.1923077) + 23.83516</p>
+</div>
+<div id="minitabReg" class="section level3">
+<h3><span class="header-section-number">6.2.6</span> Minitab</h3>
+<div class="figure"><span id="fig:RegressionMinitab"></span>
+<img src="Screenshots/Regression/RegressionMinitab.PNG" alt="\label{fig:RegressionMinitab}Minitab Output for Regression"  />
+<p class="caption">
+Figure 6.11: Minitab Output for Regression
+</p>
+</div>
+<div class="figure"><span id="fig:RegressionMinitabmeans"></span>
+<img src="Screenshots/Regression/RegressionMinitabmeans.PNG" alt="\label{fig:RegressionMinitabmeans}Minitab Output for Means"  />
+<p class="caption">
+Figure 6.12: Minitab Output for Means
+</p>
+</div>
+<p><strong>Mean-centered regression equation:</strong></p>
+<p>y’ = (5.399)(x - 4.192) + 23.835</p>
+</div>
+<div id="rReg" class="section level3">
+<h3><span class="header-section-number">6.2.7</span> R</h3>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="regression.html#cb99-1"></a>regress.data2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Datasets/Regression.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb99-2"><a href="regression.html#cb99-2"></a><span class="kw">lm</span>(<span class="dt">formula =</span> Y <span class="op">~</span><span class="st"> </span>MeanCenteredX, <span class="dt">data =</span> regress.data2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ MeanCenteredX, data = regress.data2)
+## 
+## Coefficients:
+##   (Intercept)  MeanCenteredX  
+##        23.835          5.399</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="regression.html#cb101-1"></a><span class="kw">mean</span>(regress.data2<span class="op">$</span>X)</span></code></pre></div>
+<pre><code>## [1] 4.192308</code></pre>
+<p><strong>Mean-centered regression equation:</strong></p>
+<p>y’ = (5.399)(x - 4.192308) + 23.835</p>
+</div>
+<div id="remarksReg" class="section level3">
+<h3><span class="header-section-number">6.2.8</span> Remarks</h3>
+<p>All differences in results between the software and hand calculation are due to rounding.</p>
+</div>
+<div id="refReg" class="section level3">
+<h3><span class="header-section-number">6.2.9</span> References</h3>
+<p>Hays, W. L. (1974). <em>Statistics for the social sciences (2nd Ed.)</em>. New York, US: Holt, Rinehart and Winston, Inc.</p>
+</div>
+</div>
+<div id="logistic-regression" class="section level2">
+<h2><span class="header-section-number">6.3</span> Logistic Regression</h2>
+<p>An example:</p>
+<p>The Titanic-dataset contains original data of all passengers of the Titanic. It contains their name, their passenger class (1st - 3rd), their age, their sex, and whether or not they survived the sinking of the ship. The logistic regression model is computed to allow predictions on a passengers survival status, based on their age, sex, and passenger class.</p>
+<div id="ResultsLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Results Overview</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-94">Table 6.5: </span>Result Overview Coefficents Logistic Regression</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">JASP</th>
+<th align="right">SPSS</th>
+<th align="right">SAS</th>
+<th align="right">Minitab</th>
+<th align="right">R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant</td>
+<td align="right">3.7597</td>
+<td align="right">3.760</td>
+<td align="right">3.7596</td>
+<td align="right">3.7600</td>
+<td align="right">3.7597</td>
+</tr>
+<tr class="even">
+<td align="left">Age</td>
+<td align="right">-0.0392</td>
+<td align="right">-0.039</td>
+<td align="right">-0.0392</td>
+<td align="right">-0.0392</td>
+<td align="right">-0.0392</td>
+</tr>
+<tr class="odd">
+<td align="left">2nd Class</td>
+<td align="right">-1.2920</td>
+<td align="right">-1.292</td>
+<td align="right">-1.2920</td>
+<td align="right">-1.2920</td>
+<td align="right">-1.2920</td>
+</tr>
+<tr class="even">
+<td align="left">3rd Class</td>
+<td align="right">-2.5214</td>
+<td align="right">-2.521</td>
+<td align="right">-2.5214</td>
+<td align="right">-2.5210</td>
+<td align="right">-2.5214</td>
+</tr>
+<tr class="odd">
+<td align="left">Sex(Male)</td>
+<td align="right">-2.6314</td>
+<td align="right">-2.631</td>
+<td align="right">-2.6313</td>
+<td align="right">-2.6310</td>
+<td align="right">-2.6314</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-95">Table 6.6: </span>Result Overview Odds-ratio Logistic Regression</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">JASP</th>
+<th align="right">SPSS</th>
+<th align="right">SAS</th>
+<th align="right">Minitab</th>
+<th align="right">R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant</td>
+<td align="right">42.9339</td>
+<td align="right">42.934</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">42.9339</td>
+</tr>
+<tr class="even">
+<td align="left">Age</td>
+<td align="right">0.9616</td>
+<td align="right">0.962</td>
+<td align="right">0.962</td>
+<td align="right">0.9616</td>
+<td align="right">0.9616</td>
+</tr>
+<tr class="odd">
+<td align="left">2nd Class</td>
+<td align="right">0.2747</td>
+<td align="right">0.275</td>
+<td align="right">0.275</td>
+<td align="right">0.2747</td>
+<td align="right">0.2747</td>
+</tr>
+<tr class="even">
+<td align="left">3rd Class</td>
+<td align="right">0.0803</td>
+<td align="right">0.080</td>
+<td align="right">0.080</td>
+<td align="right">0.0803</td>
+<td align="right">0.0803</td>
+</tr>
+<tr class="odd">
+<td align="left">Sex(Male)</td>
+<td align="right">0.0720</td>
+<td align="right">0.072</td>
+<td align="right">0.072</td>
+<td align="right">0.0720</td>
+<td align="right">0.0720</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: The reference case to which the odds ratios are refering is a female passenger in the first class with age 0.</p>
+</div>
+<div id="jaspLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> JASP</h3>
+<div class="figure"><span id="fig:LogRegJASP"></span>
+<img src="Screenshots/Logistic%20Regression/logregJASP.PNG" alt="\label{fig:LogRegJASP}JASP Output for Logistic Regression"  />
+<p class="caption">
+Figure 6.13: JASP Output for Logistic Regression
+</p>
+</div>
+</div>
+<div id="spssLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> SPSS</h3>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="regression.html#cb103-1"></a>DATASET ACTIVATE DataSet1.</span>
+<span id="cb103-2"><a href="regression.html#cb103-2"></a>LOGISTIC REGRESSION VARIABLES Survived</span>
+<span id="cb103-3"><a href="regression.html#cb103-3"></a>  <span class="op">/</span>METHOD=ENTER PClass Age Sex </span>
+<span id="cb103-4"><a href="regression.html#cb103-4"></a>  <span class="op">/</span><span class="kw">CONTRAST</span> (PClass)=<span class="kw">Indicator</span>(<span class="dv">1</span>)</span>
+<span id="cb103-5"><a href="regression.html#cb103-5"></a>  <span class="op">/</span><span class="kw">CONTRAST</span> (Sex)=<span class="kw">Indicator</span>(<span class="dv">1</span>)</span>
+<span id="cb103-6"><a href="regression.html#cb103-6"></a>  <span class="op">/</span>CRITERIA=<span class="kw">PIN</span>(.<span class="dv">05</span>) <span class="kw">POUT</span>(.<span class="dv">10</span>) <span class="kw">ITERATE</span>(<span class="dv">20</span>) <span class="kw">CUT</span>(.<span class="dv">5</span>).</span></code></pre></div>
+<div class="figure"><span id="fig:LogRegSPSS"></span>
+<img src="Screenshots/Logistic%20Regression/logregSPSS.PNG" alt="\label{fig:LogRegSPSS}SPSS Output for Logistic Regression"  />
+<p class="caption">
+Figure 6.14: SPSS Output for Logistic Regression
+</p>
+</div>
+</div>
+<div id="sasLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.4</span> SAS</h3>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="regression.html#cb104-1"></a>proc logistic data=work.LogReg DESC;</span>
+<span id="cb104-2"><a href="regression.html#cb104-2"></a>  class PClass Sex <span class="op">/</span><span class="st"> </span>param=reference ref=first;</span>
+<span id="cb104-3"><a href="regression.html#cb104-3"></a>  model Survived =<span class="st"> </span>Age Sex PClass; </span>
+<span id="cb104-4"><a href="regression.html#cb104-4"></a>run;</span></code></pre></div>
+<div class="figure"><span id="fig:LogRegSAS"></span>
+<img src="Screenshots/Logistic%20Regression/logregSas.PNG" alt="\label{fig:LogRegSAS}SAS Output for Logistic Regression"  />
+<p class="caption">
+Figure 6.15: SAS Output for Logistic Regression
+</p>
+</div>
+</div>
+<div id="minitabLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.5</span> Minitab</h3>
+<div class="figure"><span id="fig:LogRegMinitab"></span>
+<img src="Screenshots/Logistic%20Regression/logregMinitab.PNG" alt="\label{fig:LogRegMinitab}Minitab Output for Logistic Regression"  />
+<p class="caption">
+Figure 6.16: Minitab Output for Logistic Regression
+</p>
+</div>
+</div>
+<div id="rLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.6</span> R</h3>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="regression.html#cb105-1"></a>LogRegExample &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="kw">factor</span>(Survived) <span class="op">~</span>Age <span class="op">+</span><span class="st"> </span><span class="kw">factor</span>(PClass) <span class="op">+</span><span class="st"> </span><span class="kw">factor</span>(Sex), <span class="dt">data=</span>LogReg.data2, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb105-2"><a href="regression.html#cb105-2"></a><span class="kw">summary</span>(LogRegExample)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = factor(Survived) ~ Age + factor(PClass) + factor(Sex), 
+##     family = binomial(link = &quot;logit&quot;), data = LogReg.data2)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.7226  -0.7065  -0.3917   0.6495   2.5289  
+## 
+## Coefficients:
+##                  Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)      1.172856   0.253988   4.618 3.88e-06 ***
+## Age             -0.039177   0.007616  -5.144 2.69e-07 ***
+## factor(PClass)1  1.271127   0.160563   7.917 2.44e-15 ***
+## factor(PClass)2 -0.020835   0.138004  -0.151     0.88    
+## factor(Sex)1     1.315678   0.100753  13.058  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1025.57  on 755  degrees of freedom
+## Residual deviance:  695.14  on 751  degrees of freedom
+##   (557 observations deleted due to missingness)
+## AIC: 705.14
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="regression.html#cb107-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(LogRegExample))</span></code></pre></div>
+<pre><code>##     (Intercept)             Age factor(PClass)1 factor(PClass)2    factor(Sex)1 
+##       3.2312094       0.9615807       3.5648686       0.9793803       3.7272788</code></pre>
+</div>
+<div id="remarksLogreg" class="section level3">
+<h3><span class="header-section-number">6.3.7</span> Remarks</h3>
+<p>All differences in results between the software are due to rounding.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mixed-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="frequencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Verification Project JASP.pdf", "Verification Project JASP.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
