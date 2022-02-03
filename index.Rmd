@@ -1,0 +1,54 @@
+--- 
+title: "JASP Verificiation Project"
+author: "info@jasp-stats.org"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+biblio-style: apalike
+link-citations: yes
+description: Verification of JASP
+fig_caption: yes
+---
+
+
+
+```{r echo=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+# Introduction
+
+## The Project 
+
+This document contains the verification of the results computed in JASP. For this purpose, the same statistical tests have been performed on the same datasets, using the most popular statistical software packages and hand calculations. The comparison of the output is available for each test in the following chapters. 
+
+
+The software packages that have been used for comparison are:
+```{r echo = F}
+software <- data.frame('Software' = c('JASP','SPSS','SAS','Minitab','R'), 'Version' = c('0.13.1', '26.0.0',
+                                                                                        '3.8 (Basic Edition)',
+                                                                                        '19.2020.1', '4.0.2'))
+knitr::kable(head(software, 91), booktabs = T)
+
+
+```
+
+
+All code used for computation is available in this document. The datasets used can be found in the Github repository of this project: https://github.com/jasp-stats/jasp-verification-project
+
+## Bibliography
+
+Field, A. (2018). *Discovering statistics using IBM SPSS statistics*. Los Angeles, CA: SAGE.
+
+Freeman, E., Heathcote, A., Chalmers, K., & Hockley, W. (2010). Item effects in recognition memory for words. *Journal of Memory and Language, 62*(1), 1-18.
+
+Hays, W. L. (1974). *Statistics for the social sciences (2nd Ed.)*. New York, US: Holt, Rinehart and Winston, Inc.
+
+Kerlinger, F. N. (1969). *Foundations of behavioral research*. New York, US: Holt, Rinehart and Winston, Inc.
+

@@ -1,0 +1,232 @@
+# Factor
+
+
+
+## Principal Component Analysis 
+
+
+An example from Field (2018 pp. 795-796):
+
+"I have noticed that a lot of students become very stressed about SPSS Statistics. Imagine that I wanted to design a questionnaire to measure a trait that I termed ‘SPSS anxiety’. I devised a questionnaire to measure various aspects of students’ anxiety towards learning SPSS, the SAQ. I generated questions based on interviews with anxious and non-anxious students and came up with 23 possible questions to include. Each question was a statement followed by a five-point Likert scale: ‘strongly disagree’, ‘disagree’, ‘neither agree nor disagree’, ‘agree’ and ‘strongly agree’ (SD, D, N, A and SA, respectively). What’s more, I wanted to know whether anxiety about SPSS could be broken down into specific forms of anxiety. In other words, what latent variables contribute to anxiety about SPSS? With a little help from a few lecturer friends I collected 2571 completed questionnaires."
+
+### Results Overview {#ResultsPCA}
+
+```{r echo=F}
+ResultsEFA <- matrix(c(3.0336, 3.033, 3.034, NA, 3.03,
+                          2.8545, 2.855, 2.855, NA, 2.85,
+                          1.9859, 1.986, 1.986, NA, 1.99,
+                       1.4351, 1.435, 1.435, NA, 1.44), ncol=5, byrow = T)
+colnames(ResultsEFA) <- c('JASP', 'SPSS', 'SAS', 'Minitab', 'R')
+rownames(ResultsEFA) <- c('SS Loading (Factor1)', 'SS Loading (Factor2)', 'SS Loading (Factor3)', 'SS Loading (Factor4)')
+knitr::kable(head(ResultsEFA, 20), caption = "Result Overview Exploratory Factor Analysis", booktabs = T)
+```
+
+
+### JASP {#jaspPCA}
+
+```{r pcaJASP, echo=FALSE, fig.cap="\\label{fig:pcaJASP}JASP Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaJASPissue.PNG')
+```
+
+### SPSS {#spssPCA}
+
+```{r eval=F}
+DATASET ACTIVATE DataSet1.
+FACTOR
+  /VARIABLES Question_01 Question_02 Question_03 Question_04 Question_05 Question_06 Question_07 
+    Question_08 Question_09 Question_10 Question_11 Question_12 Question_13 Question_14 Question_15 
+    Question_16 Question_17 Question_18 Question_19 Question_20 Question_21 Question_22 Question_23
+  /MISSING LISTWISE 
+  /ANALYSIS Question_01 Question_02 Question_03 Question_04 Question_05 Question_06 Question_07 
+    Question_08 Question_09 Question_10 Question_11 Question_12 Question_13 Question_14 Question_15 
+    Question_16 Question_17 Question_18 Question_19 Question_20 Question_21 Question_22 Question_23
+  /PRINT INITIAL ROTATION
+  /PLOT EIGEN
+  /CRITERIA MINEIGEN(1) ITERATE(25)
+  /EXTRACTION PC
+  /CRITERIA ITERATE(25)
+  /ROTATION VARIMAX
+  /METHOD=CORRELATION.
+```
+
+```{r pcaSPSS, echo=FALSE, fig.cap="\\label{fig:pcaSPSS}SPSS Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaSPSS1.PNG')
+```
+
+```{r pcaSPSS2, echo=FALSE, fig.cap="\\label{fig:pcaSPSS}SPSS Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaSPSS2.PNG')
+```
+### SAS {#sasPCA}
+
+```{r eval=F}
+PROC FACTOR Data=work.PCA scree
+		Nfactors= 4
+		Method= p
+		Rotate=varimax;
+		Var Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20 Q21 Q22 Q23
+		; 
+		Run;
+```
+
+```{r pcaSAS, echo=FALSE, fig.cap="\\label{fig:pcaSAS}SAS Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaSAS1.PNG')
+```
+
+```{r pcaSAS2, echo=FALSE, fig.cap="\\label{fig:pcaSAS}SAS Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaSAS2.PNG')
+```
+
+```{r pcaSAS3, echo=FALSE, fig.cap="\\label{fig:pcaSAS}SAS Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaSAS3.PNG')
+```
+### Minitab {#minitabPCA}
+
+```{r pcaMinitab, echo=FALSE, fig.cap="\\label{fig:pcaMinitab}Minitab Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaMinitab1.PNG')
+```
+
+```{r pcaMinitab2, echo=FALSE, fig.cap="\\label{fig:pcaMinitab}Minitab Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaMinitab2.PNG')
+```
+
+```{r pcaMinitab3, echo=FALSE, fig.cap="\\label{fig:pcaMinitab}Minitab Output for Principal Component Analysis"}
+knitr::include_graphics('Screenshots/Principal Component Analysis/pcaMinitab3.PNG')
+```
+
+### R {#rPCA}
+
+```{r echo=F}
+PCA.data <- read.csv("Datasets/PCA.csv", sep=",")
+```
+
+```{r}
+## install.packages("psych")
+## install.packages("factoextra")
+## Principal Component Analysis
+library("psych")
+library("factoextra")
+fit1 <- prcomp(PCA.data, scale = TRUE) #eigenvalues
+eig.val <- get_eigenvalue(fit1)
+eig.val ## print results
+fviz_eig(fit1) #scree plot
+fit2 <- principal(PCA.data, nfactors=4, rotate = "varimax") #varimax rotiation
+fit2 ## print results
+```
+### Remarks {#remarksPCA}
+
+The rotation used was "Varimax". All differences in results between the software are due to rounding.
+
+
+
+
+### References {#refPCA}
+Field, A. (2018). *Discovering statistics using IBM SPSS statistics*. Los Angeles, CA: SAGE.
+
+
+
+
+## Exploratory Factor Analysis
+
+
+An example from Field (2018 pp. 795-796):
+
+"I have noticed that a lot of students become very stressed about SPSS Statistics. Imagine that I wanted to design a questionnaire to measure a trait that I termed ‘SPSS anxiety’. I devised a questionnaire to measure various aspects of students’ anxiety towards learning SPSS, the SAQ. I generated questions based on interviews with anxious and non-anxious students and came up with 23 possible questions to include. Each question was a statement followed by a five-point Likert scale: ‘strongly disagree’, ‘disagree’, ‘neither agree nor disagree’, ‘agree’ and ‘strongly agree’ (SD, D, N, A and SA, respectively). What’s more, I wanted to know whether anxiety about SPSS could be broken down into specific forms of anxiety. In other words, what latent variables contribute to anxiety about SPSS? With a little help from a few lecturer friends I collected 2571 completed questionnaires."
+
+### Results Overview {#ResultsEFA}
+
+```{r echo=F}
+ResultsEFA <- matrix(c(3.0336, 3.033, 3.034, NA, 3.03,
+                          2.8545, 2.855, 2.855, NA, 2.85,
+                          1.9859, 1.986, 1.986, NA, 1.99,
+                       1.4351, 1.435, 1.435, NA, 1.44), ncol=5, byrow = T)
+colnames(ResultsEFA) <- c('JASP', 'SPSS', 'SAS', 'Minitab', 'R')
+rownames(ResultsEFA) <- c('SS Loading (Factor1)', 'SS Loading (Factor2)', 'SS Loading (Factor3)', 'SS Loading (Factor4)')
+knitr::kable(head(ResultsEFA, 20), caption = "Result Overview Exploratory Factor Analysis", booktabs = T)
+```
+
+
+### JASP {#jaspEFA}
+
+```{r efaJASP, echo=FALSE, fig.cap="\\label{fig:efaJASP}JASP Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaJASP1.PNG')
+```
+
+```{r efaJASP2, echo=FALSE, fig.cap="\\label{fig:efaJASP2}JASP Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaJASP2.PNG')
+```
+
+```{r efaJASP3, echo=FALSE, fig.cap="\\label{fig:efaJASP3}JASP Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaJASP3.PNG')
+```
+### SPSS {#spssEFA}
+
+```{r eval=F}
+FACTOR
+  /VARIABLES Question_01 Question_02 Question_03 Question_04 Question_05 Question_06 Question_07 
+    Question_08 Question_09 Question_10 Question_11 Question_12 Question_13 Question_14 Question_15 
+    Question_16 Question_17 Question_18 Question_19 Question_20 Question_21 Question_22 Question_23
+  /MISSING LISTWISE 
+  /ANALYSIS Question_01 Question_02 Question_03 Question_04 Question_05 Question_06 Question_07 
+    Question_08 Question_09 Question_10 Question_11 Question_12 Question_13 Question_14 Question_15 
+    Question_16 Question_17 Question_18 Question_19 Question_20 Question_21 Question_22 Question_23
+  /PRINT INITIAL KMO EXTRACTION ROTATION
+  /CRITERIA MINEIGEN(1) ITERATE(25)
+  /EXTRACTION PAF
+  /CRITERIA ITERATE(25)
+  /ROTATION VARIMAX
+  /METHOD=CORRELATION.
+```
+
+```{r efaSPSS, echo=FALSE, fig.cap="\\label{fig:efaSPSS}SPSS Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaSPSS1.PNG')
+```
+
+```{r efaSPSS2, echo=FALSE, fig.cap="\\label{fig:efaSPSS2}SPSS Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaSPSS2.PNG')
+```
+### SAS {#sasEFA}
+
+```{r eval=F}
+PROC FACTOR Data=work.efa scree
+		Nfactors= 4
+		Method= prinit
+		Rotate=varimax;
+		Var Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20 Q21 Q22 Q23
+		; 
+		Run;
+```
+
+```{r efaSAS, echo=FALSE, fig.cap="\\label{fig:efaSAS}SAS Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaSAS1.PNG')
+```
+
+```{r efaSAS2, echo=FALSE, fig.cap="\\label{fig:efaSAS2}SAS Output for Exploratory Factor Analysis"}
+knitr::include_graphics('Screenshots/Exploratory Factor Analysis/efaSAS2.PNG')
+```
+
+### Minitab {#minitabEFA}
+
+Exploratory Factor Analysis with Principal Axis Factoring is not available in Minitab.
+
+### R {#rEFA}
+
+```{r echo=F}
+EFA.data <- read.csv("Datasets/EFA.csv", sep=",")
+```
+
+```{r}
+## install.packages("psych")
+## Principal Axis Factor Analysis
+library("psych")
+fit <- factor.pa(EFA.data, nfactors=4, rotate = "varimax")
+fit ## print results
+```
+### Remarks {#remarksEFA}
+ 
+The method used was "Principal Axis Factoring" and the rotation used was "Varimax". All differences in results between the software are due to rounding.
+
+
+
+### References {#refEFA}
+Field, A. (2018). *Discovering statistics using IBM SPSS statistics*. Los Angeles, CA: SAGE.
+

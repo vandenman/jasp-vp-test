@@ -1,0 +1,79 @@
+h1:t-tests T-Tests
+h2:independent-samples-t-test Independent Samples T-Test
+h3:ResultsISTT Results Overview
+tab:echo Result Overview Independent Samples T-Test
+h3:ByHandISTT By Hand
+h3:jaspISTT JASP
+fig:isttJASP \\label{fig:isttJASP}JASP Output for Independent Samples T-Test
+h3:spssISTT SPSS
+fig:isttSPSS \\label{fig:isttSPSS}SPSS Output for Independent Samples T-Test
+h3:sasISTT SAS
+fig:isttSAS \\label{fig:isttSAS}SAS Output for Independent Samples T-Test
+h3:minitabISTT Minitab
+fig:isttMinitab \\label{fig:isttMinitab}Minitab Output for Welch Independent Samples T-Test
+fig:isttMinitab2 \\label{fig:isttMinitab2}Minitab Output for Student Independent Samples T-Test
+h3:rISTT R
+h3:remarksISTT Remarks
+h3:refISTT References
+h2:mann-whitney-test Mann-Whitney Test
+tab:echo Data for Mann-Whitney Test
+h3:ResultsMWT Results Overview
+tab:echo Result Overview Mann-Whitney Test
+h3:ByHandMWT By Hand
+h3:jaspMWT JASP
+fig:mwtJASP \\label{fig:mwtJASP}JASP Output for Mann-Whitney Test
+h3:spssMWT SPSS
+fig:mwtSPSS \\label{fig:mwtSPSS}SPSS Output for Mann-Whitney Test
+h3:sasMWT SAS
+fig:mwtSAS \\label{fig:mwtSAS}SAS Output for Mann-Whitney Test
+h3:minitabMWT Minitab
+fig:mwtMinitab \\label{fig:mwtMinitab}Minitab Output for Mann-Whitney Test
+h3:rMWT R
+h3:remarksMWT Remarks
+h3:refMWT References
+h2:paired-samples-t-test Paired Samples T-Test
+tab:echo Data for Paired Sample T-Test
+h3:ResultsPSTT Results Overview
+tab:echo Result Overview Paired Samples T-Test
+h3:ByHandPSTT By Hand
+h3:jaspPSTT JASP
+fig:psttJASP \\label{fig:psttJASP}JASP Output for Paired Samples T-Test
+h3:spssPSTT SPSS
+fig:psttSPSS \\label{fig:psttSPSS}SPSS Output for Paired Samples T-Test
+h3:sasPSTT SAS
+fig:psttSAS \\label{fig:psttSAS}SAS Output for Paired Samples T-Test
+h3:minitabPSTT Minitab
+fig:psttMinitab \\label{fig:psttMinitab}Minitab Output for Paired Samples T-Test
+h3:rPSTT R
+h3:remarksPSTT Remarks
+h3:refPSTT References
+h2:wilcoxon-test Wilcoxon Test
+tab:echo Data for Wilcoxon Test
+h3:ResultsWilcoxon Results Overview
+tab:echo Result Overview Wilcoxon Test
+h3:ByHandWilcoxon By Hand
+h3:jaspWilcoxon JASP
+fig:WilcoxonJASP \\label{fig:WilcoxonJASP}JASP Output for Wilcoxon Test
+h3:spssWilcoxon SPSS
+fig:WilcoxonSPSS \\label{fig:WilcoxonSPSS}SPSS Output for Wilcoxon Test
+h3:sasWilcoxon SAS
+h3:minitabWilcoxon Minitab
+fig:WilcoxonMinitab \\label{fig:WilcoxonMinitab}Minitab Output for Wilcoxon Test
+h3:rWilcoxon R
+h3:remarksWilcoxon Remarks
+h3:refWilcoxon References
+h2:one-sample-t-test One Sample T-Test
+h3:ResultsOSTT Results Overview
+tab:echo Result Overview One Sample T-Test
+h3:ByHandOSTT By Hand
+h3:jaspOSTT JASP
+fig:osttJASP \\label{fig:osttJASP}JASP Output for One Sample T-Test
+h3:spssOSTT SPSS
+fig:osttSPSS \\label{fig:osttSPSS}SPSS Output for One Sample T-Test
+h3:sasOSTT SAS
+fig:osttSAS \\label{fig:osttSAS}SAS Output for One Sample T-Test
+h3:minitabOSTT Minitab
+fig:osttMinitab \\label{fig:osttMinitab}Minitab Output for One Sample T-Test
+h3:rOSTT R
+h3:remarksOSTT Remarks
+
