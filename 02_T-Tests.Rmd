@@ -162,7 +162,7 @@ Not significant for $\alpha$ = .05 or less.
 
 
 ```{r mwtJASP, echo=FALSE, fig.cap="\\label{fig:mwtJASP}JASP Output for Mann-Whitney Test"}
-knitr::include_graphics('Screenshots/Mann WHitney/mwtJASP.PNG')
+knitr::include_graphics('Screenshots/Mann-Whitney/mwtJASP.PNG')
 ```
 **Note:** W corresponds to U' in the hand calculation.
 
@@ -181,7 +181,7 @@ NPTESTS
 
 
 ```{r mwtSPSS, echo=FALSE, fig.cap="\\label{fig:mwtSPSS}SPSS Output for Mann-Whitney Test"}
-knitr::include_graphics('Screenshots/Mann WHitney/mwtSPSS.PNG')
+knitr::include_graphics('Screenshots/Mann-Whitney/mwtSPSS.PNG')
 ```
 
 **Note:** U = 15 corresponds to U' = 5.
@@ -197,7 +197,7 @@ run;
 
 
 ```{r mwtSAS, echo=FALSE, fig.cap="\\label{fig:mwtSAS}SAS Output for Mann-Whitney Test"}
-knitr::include_graphics('Screenshots/Mann WHitney/mwtSAS.PNG')
+knitr::include_graphics('Screenshots/Mann-Whitney/mwtSAS.PNG')
 ```
 
 **Note:** U = 15 corresponds to U' = 5.
@@ -205,7 +205,7 @@ knitr::include_graphics('Screenshots/Mann WHitney/mwtSAS.PNG')
 ### Minitab {#minitabMWT}
 
 ```{r mwtMinitab, echo=FALSE, fig.cap="\\label{fig:mwtMinitab}Minitab Output for Mann-Whitney Test"}
-knitr::include_graphics('Screenshots/Mann WHitney/mwtMinitab.PNG')
+knitr::include_graphics('Screenshots/Mann-Whitney/mwtMinitab.PNG')
 ```
 
 **Note:** W corresponds to U in the hand calculation and U = 15 corresponds to U' = 5.
