@@ -22,13 +22,12 @@ jobs:
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
 
       - name: Push to GitHub Pages branch
-        run: |
+        run: 
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
         git add .
         git commit -m "update book"
         git push origin gh-pages
-        fi
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
