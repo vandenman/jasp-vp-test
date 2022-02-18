@@ -108,7 +108,7 @@ library("factoextra")
 fit1 <- prcomp(PCA.data, scale = TRUE) #eigenvalues
 eig.val <- get_eigenvalue(fit1)
 eig.val ## print results
-fviz_eig(fit1) #scree plot
+#fviz_eig(fit1) #scree plot
 fit2 <- principal(PCA.data, nfactors=4, rotate = "varimax") #varimax rotiation
 fit2 ## print results
 ```
