@@ -31,6 +31,5 @@ jobs:
           git add .
           git commit -m "update book"
           git push origin master
-       
-       env:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
