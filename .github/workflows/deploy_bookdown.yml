@@ -28,4 +28,5 @@ jobs:
           git add .
           git commit -m "update book"
           git push origin gh-pages
-          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
