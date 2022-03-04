@@ -31,15 +31,15 @@ jobs:
 
       - name: Push to GitHub Pages branch
         run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git status
           git fetch origin gh-pages
           git status
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
-          git add _book/*
-          git add packages.bib
-          git commit -m "update book"
+          git add --all .
+          git commit -m "Built site for $GITHUB_SHA"
           git status
           git remote -v
-          git push origin gh-pages
+          # essentially what pkgdown does: https://github.com/r-lib/pkgdown/blob/9aae87398abdbe1cd5af5ff6f168d2e142d531c9/R/deploy-site.R#L193
+          git push --force origin HEAD:gh-pages
         shell: bash
