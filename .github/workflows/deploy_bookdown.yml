@@ -16,17 +16,21 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown", "car", "afex", "psych", "factoextra"))'
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+          packages: rmarkdown, bookdown, car, afex, psych, factoextra
+
+#       - name: Install rmarkdown
+#         run: Rscript -e 'install.packages(c("rmarkdown","bookdown", "car", "afex", "psych", "factoextra"))'
 
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
-        
+
       - name: Push to GitHub Pages branch
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add _book/*
-          git commit -m "update book"
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+          git commit -am "update book"
           git push origin gh-pages
         shell: bash
-
