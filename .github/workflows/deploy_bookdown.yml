@@ -29,8 +29,12 @@ jobs:
 
       - name: Push to GitHub Pages branch
         run: |
+          git status
+          git fetch origin gh-pages
+          git status
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
           git commit -am "update book"
+          git status
           git push origin gh-pages
         shell: bash
