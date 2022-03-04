@@ -34,7 +34,8 @@ jobs:
           git status
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          git commit -am "update book"
+          git add _book/*
+          git commit -m "update book"
           git status
           git push origin gh-pages
         shell: bash
