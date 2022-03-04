@@ -404,7 +404,7 @@ knitr::include_graphics('Screenshots/Repeated Measures ANOVA/ranovaMinitab.PNG')
 ### R {#rRanova}
 
 ```{r echo=F}
-ranova.data2 <- read.csv("Datasets/ranova2.csv", sep=",")
+ranova.data2 <- read.csv("Datasets/Ranova2.csv", sep=",")
 ```
 
 ```{r}

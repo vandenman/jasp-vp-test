@@ -290,7 +290,7 @@ knitr::kable(head(ResultsLogRegodds, 20), caption = "Result Overview Odds-ratio 
 ### JASP {#jaspLogreg}
 
 ```{r LogRegJASP, echo=FALSE, fig.cap="\\label{fig:LogRegJASP}JASP Output for Logistic Regression"}
-knitr::include_graphics('Screenshots/Logistic Regression/LogRegJASP.PNG')
+knitr::include_graphics('Screenshots/Logistic Regression/logregJASP.PNG')
 ```
 
 ### SPSS {#spssLogreg}
@@ -306,7 +306,7 @@ LOGISTIC REGRESSION VARIABLES Survived
 ```
 
 ```{r LogRegSPSS, echo=FALSE, fig.cap="\\label{fig:LogRegSPSS}SPSS Output for Logistic Regression"}
-knitr::include_graphics('Screenshots/Logistic Regression/LogRegSPSS.PNG')
+knitr::include_graphics('Screenshots/Logistic Regression/logregSPSS.PNG')
 ```
 
 ### SAS {#sasLogreg}
@@ -319,13 +319,13 @@ run;
 ```
 
 ```{r LogRegSAS, echo=FALSE, fig.cap="\\label{fig:LogRegSAS}SAS Output for Logistic Regression"}
-knitr::include_graphics('Screenshots/Logistic Regression/LogRegSAS.PNG')
+knitr::include_graphics('Screenshots/Logistic Regression/logregSas.PNG')
 ```
 
 ### Minitab {#minitabLogreg}
 
 ```{r LogRegMinitab, echo=FALSE, fig.cap="\\label{fig:LogRegMinitab}Minitab Output for Logistic Regression"}
-knitr::include_graphics('Screenshots/Logistic Regression/LogRegMinitab.PNG')
+knitr::include_graphics('Screenshots/Logistic Regression/logregMinitab.PNG')
 ```
 
 ### R {#rLogreg}

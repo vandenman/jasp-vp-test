@@ -311,7 +311,7 @@ knitr::include_graphics('Screenshots/Paired Samples T test/psttMinitab.PNG')
 ### R {#rPSTT}
 
 ```{r echo = F}
-pstt.data <- read.csv("Datasets/PairedSamplettest.csv", sep=",")
+pstt.data <- read.csv("Datasets/Pairedsamplettest.csv", sep=",")
 ```
 
 ```{r}
