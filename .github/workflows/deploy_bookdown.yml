@@ -22,18 +22,25 @@ jobs:
 
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
-        
-      - name: Move files
-        run: mv _book docs
-        shell: bash
 
       - name: Push to GitHub Pages branch
         run: |
+          # setup git credentials
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          # code below is essentialy what pkgdown does: https://github.com/r-lib/pkgdown/blob/9aae87398abdbe1cd5af5ff6f168d2e142d531c9/R/deploy-site.R#L105
+          # create gh-pages folder
+          mkdir temp
           git fetch origin gh-pages
+          git worktree add --track -B gh-pages temp origin/gh-pages
+          # move new files to the docs folder
+          rm -rf temp/*
+          mv _book/* temp/
+          cd temp
+          git status
           git add --all .
           git commit -m "Built site for commit $GITHUB_SHA"
-          # essentially what pkgdown does: https://github.com/r-lib/pkgdown/blob/9aae87398abdbe1cd5af5ff6f168d2e142d531c9/R/deploy-site.R#L193
           git push --force origin HEAD:gh-pages
+          cd ..
+          git worktree remove temp
         shell: bash
